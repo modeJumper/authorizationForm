@@ -88,6 +88,7 @@
 				$( "#user-log" ).empty().append( data );
 				if ( answerstatus === '1') {
 					$(".login-block").slideUp();
+					console.log('Ошибка при авторизации');
 				}
 			} );
 		});

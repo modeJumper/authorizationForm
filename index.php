@@ -62,6 +62,11 @@
 				</form>
 			</div>
 		</div>
+		<div class="container">
+			<div id="user-log">
+				
+			</div>
+		</div>
 		<?php endif; ?>
 		
 	</div>
@@ -80,7 +85,10 @@
 			url = $form.attr( "action" );
 
 			$.post( url, serialdata, function(data) {
-				$( "body" ).empty().append( data );
+				$( "#user-log" ).empty().append( data );
+				if ( answerstatus === '1') {
+					$(".login-block").slideUp();
+				}
 			} );
 		});
 	});

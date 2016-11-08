@@ -10,10 +10,11 @@
 		{
 			if ( password_verify($data['password'], $user->password) )
 			{
+				$status = 1;
 				$_SESSION['logged_user'] = $user;
 				$answer = '<div style="color: #32ef05; text-align: center;"> Добро пожаловать, '.$user->login.'!
 				<a href="logout.php" title="Выход">Выйти</a></div><hr>';
-				header('Location: /');
+				
 			} else
 			{
 				$errors[] = 'Неверно введён пароль';
@@ -25,10 +26,16 @@
 
 		if ( !empty($errors) )
 		{
+			$status = 0;
 			$answer = '<div style="color: #ef3405; text-align: center; margin: 10px;">'.array_shift($errors).'</div><hr>';
-			header('Location: /');
 		}
 	
 	echo $answer;
 
 ?>
+
+<script>
+
+var answerstatus = "<?php echo $status; ?>";
+
+</script>
